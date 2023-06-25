@@ -1,3 +1,9 @@
+@import "./components/Card/card.css";
+@import "./components/Header/header.css";
+@import "./components/Navigation/navigation.css";
+@import "./components/CardContainer/cardcontainer.css";
+@import "./components/SearchBar/searchbar.css";
+
 .App {
   text-align: center;
 }
@@ -13,17 +19,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -35,98 +30,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-.card-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  place-content: center;
-}
-@media (max-width: 600px) {
-  .card-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    place-content: center;
-  }
-}
-@media (min-width: 1200px) {
-  .card-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
-    place-content: center;
-  }
-}
-
-.card {
-  position: relative;
-  color: #282c34;
-  width: 300px;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: lightgray;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
-    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-    rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-.card__image-container {
-  position: relative;
-}
-.card__image-gradient {
-  position: absolute;
-  bottom: 0;
-  height: 100px;
-  width: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgb(255 255 255 / 0) 0%,
-    lightgray 100%
-  );
-}
-.card__info {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px 0;
-}
-
-.card__content {
-  padding: 10px 20px 20px;
-  display: grid;
-  gap: 20px;
-}
-.search__list {
-  list-style: none;
-}
-.search__input {
-  border-radius: 10%;
-  border: 2px solid black;
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-}
-
-.navigation {
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 90px 1fr;
-}
-.navigation__pagination {
-  color: white;
-  background-color: #282c34;
-}
-.button {
-  background-color: #282c34;
-  border: none;
-  color: white;
-  text-align: center;
-  font-size: 1.2rem;
-  transition: 0.3s ease;
-}
-.button:hover {
-  background-color: white;
-  color: #282c34;
 }
