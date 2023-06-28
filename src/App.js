@@ -3,31 +3,45 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
 import Card from "./components/Card/Card";
-import renderFetchedCards from "./components/renderCards/renderCards";
 import CardContainer from "./components/CardContainer/CardContainer";
 import SearchBar from "./components/SearchBar/SearchBar";
 import fetchData from "./components/Fetch/Fetch";
-
-const data = await fetchData();
-const cards = data.results;
-console.log(cards[0].name);
+import { useEffect, useState } from "react";
 
 function App() {
+  // jedes mal wenn sich der state ändert wird die gesamte Componete neu gerendert
+  const [name, setName] = useState("");
+  const [cards, setCards] = useState([]);
+
+  // Wird ausgeführt beim initialen rendern der Componente und wenn sich
+  // der wert im dependency Array ändert
+  useEffect(() => {
+    async function getCards() {
+      const data = await fetchData(name);
+      // ?? bedeutet, der wert dahinter wird gesetzt falls data.results undefined oder null ist
+      setCards(data.results ?? []);
+    }
+    getCards();
+    // hier ist das depenendy array
+  }, [name]);
+
   return (
     <div className="App">
       <Header />
       <main>
-        <SearchBar />
+        <SearchBar setName={setName} />
         <CardContainer>
-          <GetCardElements cards={cards} />
+          {cards.map((card) => (
+            <Card key={card.id} card={card} />
+          ))}
         </CardContainer>
       </main>
       <Navigation />
     </div>
   );
 }
-function GetCardElements({ cards }) {
-  cards.forEach((card) => {
+function GetCardElements({ characters }) {
+  characters.forEach((card) => {
     return (
       <li className="card">
         <div className="card__image-container">
