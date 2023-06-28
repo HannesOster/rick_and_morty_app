@@ -1,5 +1,7 @@
-.search__list {
-  list-style: none;
+.search__wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 .search__input {
   border-radius: 10%;
@@ -8,4 +10,10 @@
   border-bottom-left-radius: 2rem;
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
+  outline: none;
+  padding-left: 15px;
+}
+
+.search__input:focus {
+  border-color: yellowgreen;
 }
